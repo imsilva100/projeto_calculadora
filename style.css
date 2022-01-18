@@ -13,7 +13,7 @@
     background-color: #fff;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    
     padding: 15px;
 }
 .botao{
@@ -29,6 +29,12 @@
 }
 .botao:hover{
     background-color: whitesmoke;
+}
+#zero{
+    width: 145px;
+}
+#igual{
+    height: 145px;
 }
 #display{
     background-color: white;
