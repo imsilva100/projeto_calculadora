@@ -11,35 +11,35 @@
         <div class="calculadora">
             
             <p id="display"></p>
-            <table class="teclas">
+            <table id="teclado">
 
-                <tr >
-                    <td><button id = "7"class="botao" >7</button></td>
-                    <td><button id = "8"class="botao" >8</button></td>
-                    <td><button id = "9" class="botao" >9</button></td>
-                    <td><button id="divisao" class="botao" >/</button></td>
-                    <td><button id = "AC"class="botao" >AC</button></td>
+                <tr id ="linha_1" class="teclas">
+                    <td class="td_botao"><input type ="button" id = "botao_7" class="botao" value="7"></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_8" class="botao" value="8"></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_9" class="botao" value="9" ></button></td>
+                    <td class="td_botao"><input type ="button" id="divisao" class="botao" value="/">/</button></td>
+                    <td class="td_botao"><input type ="button" id = "AC"class="botao" value="AC"></button></td>
                     
                 </tr>
-                <tr >
-                    <td><button id = "4"class="botao" >4</button></td>
-                    <td><button id = "5"class="botao" >5</button></td>
-                    <td><button id = "6"class="botao" >6</button></td>
-                    <td><button id ="multiplicacao" class="botao" >*</button></td>
-                    <td><button id="limpa" class="botao" >C</button></td>
+                <tr id ="linha_2" class="teclas">
+                    <td class="td_botao"><input type ="button" id = "botao_4" class="botao" value="4"></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_5" class="botao" value="5"></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_6" class="botao" value="6"></button></td>
+                    <td class="td_botao"><input type ="button" id ="multiplicacao" class="botao" value="*"></button></td>
+                    <td class="td_botao"><input type ="button" id="limpa" class="botao" value ="C"></button></td>
                     
                 </tr>
-                <tr >
-                    <td><button id = "1"class="botao" >1</button></td>
-                    <td><button id = "2"class="botao" >2</button></td>
-                    <td><button id = "3"class="botao" >3</button></td>
-                    <td><button id ="subtracao" class="botao" >-</button></td>
-                    <td><button id ="igual" class="botao" >=</button></td>
+                <tr id ="linha_3" class="teclas">
+                    <td class="td_botao"><input type ="button" id = "botao_1" class="botao" value="1"></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_2" class="botao" value="2" ></button></td>
+                    <td class="td_botao"><input type ="button" id = "botao_3" class="botao" value="3"></button></td>
+                    <td class="td_botao"><input type ="button" id ="subtracao" class="botao" value="-"></button></td>
+                    <td class="td_botao" id ="td_igual" rowspan="2" ><input type ="button" id ="igual" class="botao" value = "="></button></td>
                 </tr>
-                <tr >
-                    <td colspan="2"><button id ="zero" class="botao" >0</button></td>
-                    <td><button id="ponto" class="botao" >.</button></td>
-                    <td><button id ="soma" class="botao" >+</button></td>
+                <tr id ="linha_4" class="teclas">
+                    <td class="td_botao" id ="td_zero" colspan="2"><input type ="button" id ="zero" class="botao"value = "0" ></button></td>
+                    <td class="td_botao"><input type ="button" id="ponto" class="botao" value="." ></button></td>
+                    <td class="td_botao"><input type ="button" id ="soma" class="botao" value="+" ></button></td>
                 </tr>
             </table>
         </div>
