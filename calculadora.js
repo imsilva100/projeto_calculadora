@@ -111,6 +111,9 @@ botaoDigitado.addEventListener("click", calcula);
 botaoDigitado = document.querySelector("#limpa");
 botaoDigitado.addEventListener("click", limpaDisplay);
 
+botaoDigitado = document.querySelector("#ac");
+botaoDigitado.addEventListener("click", apagaUltimoDigito);
+
 
 function atualizaDisplay(valor){
 
@@ -124,6 +127,16 @@ function limpaDisplay(){
     var display = document.getElementById("display");
     display.textContent = "";
     console.log(display);
+}
+
+function apagaUltimoDigito(){
+    var display = "";
+    var displayAtualizado = "";
+    display = document.getElementById("display");
+    displayAtualizado = display.textContent;
+    displayAtualizado = displayAtualizado.substring(0, displayAtualizado.length -1);
+    console.log(displayAtualizado);
+    display.textContent = displayAtualizado;
 }
 
 function calcula(){
