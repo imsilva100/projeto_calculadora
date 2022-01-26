@@ -117,21 +117,21 @@ botaoDigitado.addEventListener("click", apagaUltimoDigito);
 
 function atualizaDisplay(valor){
 
-    var display = document.getElementById("display");
+    let display = document.getElementById("display");
     display.textContent = display.textContent + valor;
     console.log(display);
 
 }
 
 function limpaDisplay(){
-    var display = document.getElementById("display");
+    let display = document.getElementById("display");
     display.textContent = "";
     console.log(display);
 }
 
 function apagaUltimoDigito(){
-    var display = "";
-    var displayAtualizado = "";
+    let display = "";
+    let displayAtualizado = "";
     display = document.getElementById("display");
     displayAtualizado = display.textContent;
     displayAtualizado = displayAtualizado.substring(0, displayAtualizado.length -1);
@@ -140,8 +140,23 @@ function apagaUltimoDigito(){
 }
 
 function calcula(){
-    var calculo = document.getElementById("display");
+    let calculo = document.getElementById("display");
     calculo = calculo.textContent;
     expressao = calculo.split("");
+    expressao.forEach(operacao => {
+        if(operacao === "*" ){
+            let operador = "multiplicacao"
+            console.log(operador);
+        }else if(operacao === "/"){
+            let operador = "divisao"
+            console.log(operador);
+        }else if (operacao === "+"){
+            let operador ="soma";
+            console.log(operador);
+        }else if (operacao ==="-"){
+            let operador = "subtração"
+            console.log(operador);
+        }
+    });
     console.log(expressao);
 }
