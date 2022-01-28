@@ -118,8 +118,10 @@ botaoDigitado.addEventListener("click", apagaUltimoDigito);
 function atualizaDisplay(valor){
 
     let display = document.getElementById("display");
+    var ultimoDigito = display.textContent.substring(display.length, 1);
     display.textContent = display.textContent + valor;
     console.log(display);
+    console.log(ultimoDigito);
 
 }
 
