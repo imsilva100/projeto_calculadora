@@ -143,20 +143,78 @@ function calcula(){
     let calculo = document.getElementById("display");
     calculo = calculo.textContent;
     expressao = calculo.split("");
-    expressao.forEach(operacao => {
-        if(operacao === "*" ){
-            let operador = "multiplicacao"
-            console.log(operador);
-        }else if(operacao === "/"){
-            let operador = "divisao"
-            console.log(operador);
-        }else if (operacao === "+"){
-            let operador ="soma";
-            console.log(operador);
-        }else if (operacao ==="-"){
-            let operador = "subtração"
-            console.log(operador);
+
+    expressao.map(function(digito, indice){
+        if(digito === "*"){
+            
+            var posicaoValor1 = indice - 1; 
+            var posicaoValor2 = indice +1;
+
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
+            
+            var calculo = (valor1 * valor2)
+
+            console.log(valor1);
+            console.log(valor2);
+            console.log(calculo);
+
+            display.textContent = calculo;
+
+        }else if(digito === "/"){
+            
+            var posicaoValor1 = indice - 1; 
+            var posicaoValor2 = indice +1;
+
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
+            
+            var calculo = (valor1 / valor2)
+
+            console.log(valor1);
+            console.log(valor2);
+            console.log(calculo);
+
+            display.textContent = calculo;
+
+        }else if(digito === "+"){
+            
+            var posicaoValor1 = indice - 1; 
+            var posicaoValor2 = indice +1;
+
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
+            
+            var calculo = (parseFloat(valor1) + parseFloat(valor2));
+
+            console.log(valor1);
+            console.log(valor2);
+            console.log(calculo);
+
+            display.textContent = calculo;
+
+        }else if(digito === "-"){
+            
+            var posicaoValor1 = indice - 1; 
+            var posicaoValor2 = indice +1;
+
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
+            
+            var calculo = (valor1 - valor2)
+
+            console.log(valor1);
+            console.log(valor2);
+            console.log(calculo);
+
+            display.textContent = calculo;
+
         }
-    });
+        
+    })
+
+
+
+
     console.log(expressao);
 }
