@@ -118,7 +118,11 @@ botaoDigitado.addEventListener("click", apagaUltimoDigito);
 function atualizaDisplay(valor){
 
     let display = document.getElementById("display");
-    var ultimoDigito = display.textContent.substring(display.length, 1);
+    var ultimoDigito = display.textContent;
+    ultimoDigito = ultimoDigito.substring(ultimoDigito.length,ultimoDigito.length -1);
+
+    
+
     display.textContent = display.textContent + valor;
     console.log(display);
     console.log(ultimoDigito);
@@ -166,7 +170,7 @@ function calcula(){
         }else if(digito === "/"){
             
             var posicaoValor1 = indice - 1; 
-            var posicaoValor2 = indice +1;
+            var posicaoValor2 = indice + 1;
 
             var valor1 = expressao[posicaoValor1];
             var valor2 = expressao[posicaoValor2];
