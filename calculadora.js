@@ -1,35 +1,46 @@
-var botaoDigitado = 0;
+var expressao = [];
+var botaoDigitado = "";
+var numero = "";
+var display = "";
+var digito = "";
+var display = "";
+
+
+//DIGITOS
+
+
 botaoDigitado = document.querySelector("#botao_9");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 9;
+    digito = 9;
     atualizaDisplay(digito);
-    console.log(digito);
+    
+
 });
 
 botaoDigitado = document.querySelector("#botao_8");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 8;
+    digito = 8;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_7");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 7;
+    digito = 7;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_6");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 6;
+    digito = 6;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_5");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 5;
+    digito = 5;
     atualizaDisplay(digito);
     console.log(digito);
 
@@ -37,70 +48,75 @@ botaoDigitado.addEventListener("click", function (){
 
 botaoDigitado = document.querySelector("#botao_4");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 4;
+    digito = 4;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_3");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 3;
+    digito = 3;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_2");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 2;
+    digito = 2;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#botao_1");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 1;
+    digito = 1;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#zero");
 botaoDigitado.addEventListener("click", function (){
-    var digito = 0;
+    digito = 0;
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#ponto");
 botaoDigitado.addEventListener("click", function (){
-    var digito = ".";
+    digito = ".";
     atualizaDisplay(digito);
     console.log(digito);
 });
 
+
+//OPERAÇÕES
+
+
 botaoDigitado = document.querySelector("#divisao");
 botaoDigitado.addEventListener("click", function (){
-    var digito = "/";
+    digito = "/";
+    
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#multiplicacao");
 botaoDigitado.addEventListener("click", function (){
-    var digito = "*";
+    digito = "*";
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#subtracao");
 botaoDigitado.addEventListener("click", function (){
-    var digito = "-";
+    digito = "-";
     atualizaDisplay(digito);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#soma");
 botaoDigitado.addEventListener("click", function (){
-    var digito = "+";
+    digito = "+";
     atualizaDisplay(digito);
     console.log(digito);
 });
@@ -115,29 +131,47 @@ botaoDigitado = document.querySelector("#ac");
 botaoDigitado.addEventListener("click", apagaUltimoDigito);
 
 
+//FUNÇÕES
+
+
+function atualizaExpressao(numero, operador){
+    expressao.push(numero, operador);
+    console.log(expressao);
+}
+
+function guardaUltimoNumero(){
+    var ultimoNumero = display.textContent;
+    ultimoNumero = ultimoNumero.substring(ultimoNumero.length,ultimoNumero.length -1);
+    console.log(ultimoNumero);
+
+}
+
 function atualizaDisplay(valor){
 
-    let display = document.getElementById("display");
-    var ultimoDigito = display.textContent;
-    ultimoDigito = ultimoDigito.substring(ultimoDigito.length,ultimoDigito.length -1);
+    if(valor === "/" || valor === "*" || valor === "+" || valor === "-"){
+        
+        atualizaExpressao(numero, valor);
+        numero = "";
+    }else{
+        numero = numero + valor;
+    }
 
-    
-
+    display = document.getElementById("display");
     display.textContent = display.textContent + valor;
     console.log(display);
-    console.log(ultimoDigito);
+    console.log(numero);
 
 }
 
 function limpaDisplay(){
-    let display = document.getElementById("display");
+    display = document.getElementById("display");
     display.textContent = "";
     console.log(display);
 }
 
 function apagaUltimoDigito(){
-    let display = "";
-    let displayAtualizado = "";
+    display = "";
+    displayAtualizado = "";
     display = document.getElementById("display");
     displayAtualizado = display.textContent;
     displayAtualizado = displayAtualizado.substring(0, displayAtualizado.length -1);
@@ -145,19 +179,21 @@ function apagaUltimoDigito(){
     display.textContent = displayAtualizado;
 }
 
+
+
 function calcula(){
     let calculo = document.getElementById("display");
     calculo = calculo.textContent;
-    expressao = calculo.split("");
+    numerosDigitados = calculo.split("");
 
-    expressao.map(function(digito, indice){
+    numerosDigitados.map(function(digito, indice){
         if(digito === "*"){
             
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice +1;
 
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
+            var valor1 = numerosDigitados[posicaoValor1];
+            var valor2 = numerosDigitados[posicaoValor2];
             
             var calculo = (valor1 * valor2)
 
@@ -172,8 +208,8 @@ function calcula(){
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice + 1;
 
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
+            var valor1 = numerosDigitados[posicaoValor1];
+            var valor2 = numerosDigitados[posicaoValor2];
             
             var calculo = (valor1 / valor2)
 
@@ -188,8 +224,8 @@ function calcula(){
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice +1;
 
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
+            var valor1 = numerosDigitados[posicaoValor1];
+            var valor2 = numerosDigitados[posicaoValor2];
             
             var calculo = (parseFloat(valor1) + parseFloat(valor2));
 
@@ -204,8 +240,10 @@ function calcula(){
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice +1;
 
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
+
+
+            var valor1 = numerosDigitados[posicaoValor1];
+            var valor2 = numerosDigitados[posicaoValor2];
             
             var calculo = (valor1 - valor2)
 
@@ -222,5 +260,5 @@ function calcula(){
 
 
 
-    console.log(expressao);
+    console.log(numerosDigitados);
 }
