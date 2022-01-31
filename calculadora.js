@@ -4,6 +4,7 @@ var numero = "";
 var display = "";
 var digito = "";
 var display = "";
+var ultimoNumero ="";
 
 
 //DIGITOS
@@ -12,80 +13,80 @@ var display = "";
 botaoDigitado = document.querySelector("#botao_9");
 botaoDigitado.addEventListener("click", function (){
     digito = 9;
-    atualizaDisplay(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
     
-
 });
 
 botaoDigitado = document.querySelector("#botao_8");
 botaoDigitado.addEventListener("click", function (){
     digito = 8;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito), ultimoNumero;
+    
 });
 
 botaoDigitado = document.querySelector("#botao_7");
 botaoDigitado.addEventListener("click", function (){
     digito = 7;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#botao_6");
 botaoDigitado.addEventListener("click", function (){
     digito = 6;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
+    
 });
 
 botaoDigitado = document.querySelector("#botao_5");
 botaoDigitado.addEventListener("click", function (){
     digito = 5;
-    atualizaDisplay(digito);
-    console.log(digito);
-
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#botao_4");
 botaoDigitado.addEventListener("click", function (){
     digito = 4;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);  
 });
 
 botaoDigitado = document.querySelector("#botao_3");
 botaoDigitado.addEventListener("click", function (){
     digito = 3;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#botao_2");
 botaoDigitado.addEventListener("click", function (){
     digito = 2;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#botao_1");
 botaoDigitado.addEventListener("click", function (){
     digito = 1;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#zero");
 botaoDigitado.addEventListener("click", function (){
     digito = 0;
-    atualizaDisplay(digito);
-    console.log(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 botaoDigitado = document.querySelector("#ponto");
 botaoDigitado.addEventListener("click", function (){
     digito = ".";
-    atualizaDisplay(digito);
-    console.log(digito);
+    atualizaDisplay(digito, ultimoNumero);
 });
 
 
@@ -95,29 +96,32 @@ botaoDigitado.addEventListener("click", function (){
 botaoDigitado = document.querySelector("#divisao");
 botaoDigitado.addEventListener("click", function (){
     digito = "/";
-    
-    atualizaDisplay(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#multiplicacao");
 botaoDigitado.addEventListener("click", function (){
     digito = "*";
-    atualizaDisplay(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#subtracao");
 botaoDigitado.addEventListener("click", function (){
     digito = "-";
-    atualizaDisplay(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
     console.log(digito);
 });
 
 botaoDigitado = document.querySelector("#soma");
 botaoDigitado.addEventListener("click", function (){
     digito = "+";
-    atualizaDisplay(digito);
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
     console.log(digito);
 });
 
@@ -140,33 +144,57 @@ function atualizaExpressao(numero, operador){
 }
 
 function guardaUltimoNumero(){
-    var ultimoNumero = display.textContent;
+    display = document.getElementById("display");
+    ultimoNumero = display.textContent;
     ultimoNumero = ultimoNumero.substring(ultimoNumero.length,ultimoNumero.length -1);
-    console.log(ultimoNumero);
-
+    return ultimoNumero;
 }
 
-function atualizaDisplay(valor){
-
-    if(valor === "/" || valor === "*" || valor === "+" || valor === "-"){
-        
-        atualizaExpressao(numero, valor);
-        numero = "";
-    }else{
-        numero = numero + valor;
-    }
-
+function atualizaDisplay(valor, ultimoNumero){
     display = document.getElementById("display");
-    display.textContent = display.textContent + valor;
-    console.log(display);
-    console.log(numero);
+    if (valor === "." &&   display.textContent.includes(".")) {
+            
+    }else if(valor === "/" &&  ultimoNumero ==="/"){
 
+    }else if(valor === "*" &&   ultimoNumero ==="*"){
+
+    }else if(valor === "+" &&   ultimoNumero ==="+"){
+
+    }else if(valor === "-" &&   ultimoNumero ==="-"){
+
+    }
+    
+    
+    else{
+
+            if(valor === "/" || valor === "*" || valor === "+" || valor === "-"){
+                atualizaExpressao(numero, valor);
+                numero = "";
+            }else{
+                numero = numero + valor;
+        }
+
+        //display = document.getElementById("display");
+        display.textContent = display.textContent + valor;
+        console.log(display);
+        console.log(numero);
+        console.log(valor);
+
+    }
 }
 
 function limpaDisplay(){
     display = document.getElementById("display");
     display.textContent = "";
-    console.log(display);
+    expressao= [];
+    expressao = [];
+    botaoDigitado = "";
+    numero = "";
+    display = "";
+    digito = "";
+    display = "";
+    ultimoNumero = "";
+
 }
 
 function apagaUltimoDigito(){
@@ -177,25 +205,34 @@ function apagaUltimoDigito(){
     displayAtualizado = displayAtualizado.substring(0, displayAtualizado.length -1);
     console.log(displayAtualizado);
     display.textContent = displayAtualizado;
+    expressao.pop(digito);
 }
 
 
 
 function calcula(){
-    let calculo = document.getElementById("display");
-    calculo = calculo.textContent;
-    numerosDigitados = calculo.split("");
 
-    numerosDigitados.map(function(digito, indice){
+
+    //let calculo = document.getElementById("display");
+    //calculo = calculo.textContent;
+    //expressao = calculo.split("");
+
+    expressao.push(digito);
+
+    expressao.map(function(digito, indice){
         if(digito === "*"){
             
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice +1;
 
-            var valor1 = numerosDigitados[posicaoValor1];
-            var valor2 = numerosDigitados[posicaoValor2];
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
             
-            var calculo = (valor1 * valor2)
+            var calculo = (parseFloat(valor1) * parseFloat(valor2));
+
+            console.log(digito);
+            console.log(posicaoValor1);
+            console.log(posicaoValor2);
 
             console.log(valor1);
             console.log(valor2);
@@ -208,8 +245,8 @@ function calcula(){
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice + 1;
 
-            var valor1 = numerosDigitados[posicaoValor1];
-            var valor2 = numerosDigitados[posicaoValor2];
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
             
             var calculo = (valor1 / valor2)
 
@@ -224,8 +261,8 @@ function calcula(){
             var posicaoValor1 = indice - 1; 
             var posicaoValor2 = indice +1;
 
-            var valor1 = numerosDigitados[posicaoValor1];
-            var valor2 = numerosDigitados[posicaoValor2];
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
             
             var calculo = (parseFloat(valor1) + parseFloat(valor2));
 
@@ -242,8 +279,8 @@ function calcula(){
 
 
 
-            var valor1 = numerosDigitados[posicaoValor1];
-            var valor2 = numerosDigitados[posicaoValor2];
+            var valor1 = expressao[posicaoValor1];
+            var valor2 = expressao[posicaoValor2];
             
             var calculo = (valor1 - valor2)
 
@@ -256,9 +293,4 @@ function calcula(){
         }
         
     })
-
-
-
-
-    console.log(numerosDigitados);
 }
