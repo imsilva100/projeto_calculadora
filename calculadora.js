@@ -222,11 +222,9 @@ function calcula() {
     
     var indice = 0;
 
-    
-
     for(indice = 0; expressao.length > indice; indice ++){
         
-        if (expressao[indice] === "*") {
+        if (expressao[indice] === "*" || expressao[indice] === "/") {
             console.log(expressao[indice]);
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
@@ -234,18 +232,23 @@ function calcula() {
             var valor1 = expressao[posicaoValor1];
             var valor2 = expressao[posicaoValor2];
 
-            var calculo = (parseFloat(valor1) * parseFloat(valor2));
-            console.log(calculo);
+            if (expressao[indice] === "*"){
+                var calculo = (parseFloat(valor1) * parseFloat(valor2));
+                console.log(calculo);
+            }else{
+                var calculo = (parseFloat(valor1) / parseFloat(valor2));
+                console.log(calculo);
+            }
 
             expressao.splice(posicaoValor1,3,calculo);
             console.log(expressao);
-            indice = 0
+            indice = 0;
         }           
     }
 
     for(indice = 0; expressao.length > indice; indice ++){
         
-        if (expressao[indice] === "/") {
+        if (expressao[indice] === "+" || expressao[indice] === "-") {
             console.log(expressao[indice]);
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
@@ -253,50 +256,17 @@ function calcula() {
             var valor1 = expressao[posicaoValor1];
             var valor2 = expressao[posicaoValor2];
 
-            var calculo = (parseFloat(valor1) / parseFloat(valor2));
-            console.log(calculo);
+            if (expressao[indice] === "+"){
+                var calculo = (parseFloat(valor1) + parseFloat(valor2));
+                console.log(calculo);
+            }else{
+                var calculo = (parseFloat(valor1) - parseFloat(valor2));
+                console.log(calculo);
+            }
 
             expressao.splice(posicaoValor1,3,calculo);
             console.log(expressao);
-            indice = 0
-        }           
-    }
-
-    for(indice = 0; expressao.length > indice; indice ++){
-        
-        if (expressao[indice] === "+") {
-            console.log(expressao[indice]);
-            var posicaoValor1 = indice - 1;
-            var posicaoValor2 = indice + 1;
-
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
-
-            var calculo = (parseFloat(valor1) + parseFloat(valor2));
-            console.log(calculo);
-
-            expressao.splice(posicaoValor1,3,calculo);
-            console.log(expressao);
-            indice = 0
-        }           
-    }
-
-    for(indice = 0; expressao.length > indice; indice ++){
-        
-        if (expressao[indice] === "-") {
-            console.log(expressao[indice]);
-            var posicaoValor1 = indice - 1;
-            var posicaoValor2 = indice + 1;
-
-            var valor1 = expressao[posicaoValor1];
-            var valor2 = expressao[posicaoValor2];
-
-            var calculo = (parseFloat(valor1) - parseFloat(valor2));
-            console.log(calculo);
-
-            expressao.splice(posicaoValor1,3,calculo);
-            console.log(expressao);
-            indice = 0
+            indice = 0;
         }           
     }
 
