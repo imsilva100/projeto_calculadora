@@ -1,6 +1,4 @@
 var expressao = [];
-var expressaoParcial = [];
-var sequenciaOperacao = [];
 var botaoDigitado = "";
 var numero = "";
 var display = "";
@@ -8,6 +6,7 @@ var digito = "";
 var display = "";
 var ultimoNumero = "";
 var calculo = 0;
+var calculoTerminado = 0;
 
 
 //DIGITOS
@@ -91,7 +90,7 @@ botaoDigitado.addEventListener("click", function () {
 });
 
 
-//OPERAÇÕES
+//---------------------------OPERAÇÕES-------------------------------------------------
 
 
 botaoDigitado = document.querySelector("#divisao");
@@ -136,21 +135,33 @@ botaoDigitado = document.querySelector("#ac");
 botaoDigitado.addEventListener("click", apagaUltimoDigito);
 
 
-//FUNÇÕES
+//-----------------------------------FUNÇÕES---------------------------------------------------
 
 
-function atualizaExpressao(numero, operador) {
-
+/*function atualizaExpressao(numero, operador) {
+    console.log(operador);
+    console.log(numero);
     expressao.push(numero);
     if (operador != "") {
         expressao.push(operador);
     }
-    sequenciaOperacao.push(operador);
-}
-
-/*function atualizaExpressaoParcial(arrayexpressao, posicaoInicial, valorCalculoParcial){
-    arrayexpressao.splice(posicaoInicial,3,valorCalculoParcial);
 }*/
+
+function atualizaExpressao(numero, operador) {
+
+    if(calculoTerminado ===0){
+        console.log(operador);
+        console.log(numero);
+        expressao.push(numero);
+        if (operador != "") {
+            expressao.push(operador);
+    }}else{
+        console.log(expressao);
+        console.log(expressao);
+        expressao.push(operador);
+
+    }
+}
 
 function guardaUltimoNumero() {
     display = document.getElementById("display");
@@ -161,6 +172,7 @@ function guardaUltimoNumero() {
 
 function atualizaDisplay(valor, ultimoNumero) {
 
+    sinal ="";
 
     display = document.getElementById("display");
     if (valor === "." && display.textContent.includes(".")) {
@@ -174,17 +186,26 @@ function atualizaDisplay(valor, ultimoNumero) {
     } else if (valor === "-" && ultimoNumero === "-") {
 
     } else {
-        console.log(numero);
-        console.log(valor);
+
         if (valor === "/" || valor === "*" || valor === "+" || valor === "-") {
-            atualizaExpressao(numero, valor);
-            numero = "";
+
+            if((ultimoNumero === "/" || ultimoNumero === "*" || ultimoNumero === "+" || ultimoNumero === "-")){
+
+                apagaUltimoDigito();
+                expressao.push(valor);
+
+            }else{
+
+                atualizaExpressao(numero, valor);
+                numero = "";
+            }
+
         } else {
             numero = numero + valor;
         }
 
-        //display = document.getElementById("display");
         display.textContent = display.textContent + valor;
+        console.log(valor);
 
     }
 }
@@ -193,14 +214,13 @@ function limpaDisplay() {
     display = document.getElementById("display");
     display.textContent = "";
     expressao = [];
-    sequenciaOperacao = [];
     botaoDigitado = "";
     numero = "";
     display = "";
     digito = "";
     display = "";
     ultimoNumero = "";
-
+    calculoTerminado = 0;
 }
 
 function apagaUltimoDigito() {
@@ -214,8 +234,6 @@ function apagaUltimoDigito() {
     expressao.pop(digito);
 }
 
-
-
 function calcula() {
     expressao.push(numero);
     console.log(expressao);
@@ -225,6 +243,7 @@ function calcula() {
     for(indice = 0; expressao.length > indice; indice ++){
         
         if (expressao[indice] === "*" || expressao[indice] === "/") {
+
             console.log(expressao[indice]);
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
@@ -233,9 +252,12 @@ function calcula() {
             var valor2 = expressao[posicaoValor2];
 
             if (expressao[indice] === "*"){
+
                 var calculo = (parseFloat(valor1) * parseFloat(valor2));
                 console.log(calculo);
+
             }else{
+
                 var calculo = (parseFloat(valor1) / parseFloat(valor2));
                 console.log(calculo);
             }
@@ -249,6 +271,7 @@ function calcula() {
     for(indice = 0; expressao.length > indice; indice ++){
         
         if (expressao[indice] === "+" || expressao[indice] === "-") {
+
             console.log(expressao[indice]);
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
@@ -257,9 +280,12 @@ function calcula() {
             var valor2 = expressao[posicaoValor2];
 
             if (expressao[indice] === "+"){
+
                 var calculo = (parseFloat(valor1) + parseFloat(valor2));
                 console.log(calculo);
+
             }else{
+
                 var calculo = (parseFloat(valor1) - parseFloat(valor2));
                 console.log(calculo);
             }
@@ -278,6 +304,7 @@ function exibeResultado(resultado) {
     console.log(resultado);
     display.textContent = resultado;
     expressao = [];
-    expressao = resultado;
+    expressao.push(resultado);
     console.log(expressao);
+    calculoTerminado = 1;
 }
