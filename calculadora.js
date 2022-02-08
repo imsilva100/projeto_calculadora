@@ -137,16 +137,6 @@ botaoDigitado.addEventListener("click", apagaUltimoDigito);
 
 //-----------------------------------FUNÇÕES---------------------------------------------------
 
-
-/*function atualizaExpressao(numero, operador) {
-    console.log(operador);
-    console.log(numero);
-    expressao.push(numero);
-    if (operador != "") {
-        expressao.push(operador);
-    }
-}*/
-
 function atualizaExpressao(numero, operador) {
 
     if(calculoTerminado ===0){
