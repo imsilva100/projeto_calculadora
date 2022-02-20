@@ -95,10 +95,10 @@ botaoDigitado.addEventListener("click", function () {
 
 botaoDigitado = document.querySelector("#divisao");
 botaoDigitado.addEventListener("click", function () {
-        digito = "/";
-        guardaUltimoNumero();
-        atualizaDisplay(digito, ultimoNumero);
-        console.log(digito);
+    digito = "/";
+    guardaUltimoNumero();
+    atualizaDisplay(digito, ultimoNumero);
+        
 });
 
 botaoDigitado = document.querySelector("#multiplicacao");
@@ -106,7 +106,7 @@ botaoDigitado.addEventListener("click", function () {
     digito = "*";
     guardaUltimoNumero();
     atualizaDisplay(digito, ultimoNumero);
-    console.log(digito);
+    
 });
 
 botaoDigitado = document.querySelector("#subtracao");
@@ -114,7 +114,7 @@ botaoDigitado.addEventListener("click", function () {
     digito = "-";
     guardaUltimoNumero();
     atualizaDisplay(digito, ultimoNumero);
-    console.log(digito);
+    
 });
 
 botaoDigitado = document.querySelector("#soma");
@@ -122,7 +122,7 @@ botaoDigitado.addEventListener("click", function () {
     digito = "+";
     guardaUltimoNumero();
     atualizaDisplay(digito, ultimoNumero);
-    console.log(digito);
+    
 });
 
 botaoDigitado = document.querySelector("#igual");
@@ -140,14 +140,12 @@ botaoDigitado.addEventListener("click", apagaUltimoDigito);
 function atualizaExpressao(numero, operador) {
 
     if(calculoTerminado ===0){
-        console.log(operador);
-        console.log(numero);
+
         expressao.push(numero);
         if (operador != "") {
             expressao.push(operador);
     }}else{
-        console.log(expressao);
-        console.log(expressao);
+
         expressao.push(operador);
 
     }
@@ -162,10 +160,9 @@ function guardaUltimoNumero() {
 
 function atualizaDisplay(valor, ultimoNumero) {
 
-    sinal ="";
-
     display = document.getElementById("display");
-    if (valor === "." && display.textContent.includes(".")) {
+
+    if(valor === "." && display.textContent.includes(".")) {
 
     } else if (valor === "/" && ultimoNumero === "/") {
 
@@ -195,7 +192,7 @@ function atualizaDisplay(valor, ultimoNumero) {
         }
 
         display.textContent = display.textContent + valor;
-        console.log(valor);
+        
 
     }
 }
@@ -226,7 +223,7 @@ function apagaUltimoDigito() {
 
 function calcula() {
     expressao.push(numero);
-    console.log(expressao);
+    
     
     var indice = 0;
 
@@ -234,7 +231,7 @@ function calcula() {
         
         if (expressao[indice] === "*" || expressao[indice] === "/") {
 
-            console.log(expressao[indice]);
+            
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
 
@@ -244,16 +241,16 @@ function calcula() {
             if (expressao[indice] === "*"){
 
                 var calculo = (parseFloat(valor1) * parseFloat(valor2));
-                console.log(calculo);
+                
 
             }else{
 
                 var calculo = (parseFloat(valor1) / parseFloat(valor2));
-                console.log(calculo);
+                
             }
 
             expressao.splice(posicaoValor1,3,calculo);
-            console.log(expressao);
+            
             indice = 0;
         }           
     }
@@ -262,7 +259,7 @@ function calcula() {
         
         if (expressao[indice] === "+" || expressao[indice] === "-") {
 
-            console.log(expressao[indice]);
+            
             var posicaoValor1 = indice - 1;
             var posicaoValor2 = indice + 1;
 
@@ -272,16 +269,15 @@ function calcula() {
             if (expressao[indice] === "+"){
 
                 var calculo = (parseFloat(valor1) + parseFloat(valor2));
-                console.log(calculo);
-
+                
             }else{
 
                 var calculo = (parseFloat(valor1) - parseFloat(valor2));
-                console.log(calculo);
+                
             }
 
             expressao.splice(posicaoValor1,3,calculo);
-            console.log(expressao);
+            
             indice = 0;
         }           
     }
@@ -291,10 +287,9 @@ function calcula() {
 }
 
 function exibeResultado(resultado) {
-    console.log(resultado);
+    
     display.textContent = resultado;
     expressao = [];
     expressao.push(resultado);
-    console.log(expressao);
     calculoTerminado = 1;
 }
